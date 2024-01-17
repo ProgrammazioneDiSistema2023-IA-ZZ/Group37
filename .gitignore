@@ -3,6 +3,21 @@ list.d
 list.o
 wchan.d
 wchan.o
+test_g37.d
+test_g37.o
+_test_semaphore
+_test_input
+test_semaphore.asm
+test_input.asm
+test_semaphore.sym
+test_input.sym
+input.d
+input.o
+semaphore.d
+semaphore.o
+*.o
+*.d
+settings.json
 # =======================
 
 bio.d

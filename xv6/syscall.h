@@ -20,3 +20,10 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+
+// GROUP37 ====================================
+#define SYS_test_g37    22 
+#define SYS_sem_create  23
+#define SYS_sem_wait    24
+#define SYS_sem_signal  25
+// ============================================

@@ -7,6 +7,9 @@
 #include "mmu.h"
 #include "proc.h"
 
+#include "test_g37.h" // GROUP37 EDITS
+
+
 int
 sys_fork(void)
 {
@@ -89,3 +92,42 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+// GROUP37 EDITS ====================
+int sys_test_g37(void) {
+  test_g37();
+}
+
+int sys_sem_create(void) {
+  uint i;
+  char* name;
+  int sem;
+
+  argint(0, &sem);
+  if (sem < 0) return -1;
+  
+  argstr(1, (char**) &name);
+  argint(2, (int*) &i);
+  sem_create(sem, name, i);
+
+  return 0;
+}
+
+int sys_sem_wait(void) {
+  int sem;
+  argint(0, &sem);
+  if (sem < 0) return -1;
+
+  sem_wait(sem);
+  return 0;
+}
+
+int sys_sem_signal(void) {
+  int sem;
+  argint(0, &sem);
+  if (sem < 0) return -1;
+
+  sem_signal(sem);
+  return 0;
+}
+// ==================================

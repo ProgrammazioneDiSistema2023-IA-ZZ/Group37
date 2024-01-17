@@ -29,3 +29,10 @@ SYSCALL(getpid)
 SYSCALL(sbrk)
 SYSCALL(sleep)
 SYSCALL(uptime)
+
+// GROUP 37 ==========================
+SYSCALL(test_g37)     
+SYSCALL(sem_create)
+SYSCALL(sem_wait)
+SYSCALL(sem_signal)
+// ====================================

@@ -104,6 +104,15 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 
+// GROUP37 EDITS ===================
+// extern struct wchan* sys_wchan_create(void);
+extern int sys_test_g37(void);
+
+extern int sys_sem_create(void);
+extern int sys_sem_wait(void);
+extern int sys_sem_signal(void);
+// =================================
+
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -126,6 +135,13 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+
+// GROUP37 EDITS ===================
+[SYS_test_g37] sys_test_g37,
+[SYS_sem_create] sys_sem_create,
+[SYS_sem_wait] sys_sem_wait,
+[SYS_sem_signal] sys_sem_signal,
+// =================================
 };
 
 void

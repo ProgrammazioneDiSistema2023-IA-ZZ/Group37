@@ -37,7 +37,7 @@ int list_is_empty(struct proclist* head){
    return head->next == head;
 }
 
-int pop(struct proclist* head){
+int list_pop_left(struct proclist* head){
     // controlliamo che la lista non sia vuota
     if(list_is_empty(head))
         return -1;
@@ -48,4 +48,10 @@ int pop(struct proclist* head){
 
     // ritorno il pid dell'elemento rimosso
     return entry->pid;
+}
+
+// funzione che rimuove tutti gli elementi dalla lista
+void list_cleanup(struct proclist* head){
+    while(!list_is_empty(head))
+        list_pop_left(head);
 }

@@ -37,3 +37,9 @@ void* memset(void*, int, uint);
 void* malloc(uint);
 void free(void*);
 int atoi(const char*);
+
+
+// GROUP37 EDITS ===============================
+char            getchar();
+int             getint(); 
+// =============================================
