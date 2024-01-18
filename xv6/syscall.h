@@ -26,4 +26,7 @@
 #define SYS_sem_create  23
 #define SYS_sem_wait    24
 #define SYS_sem_signal  25
+
+#define SYS_barrier_create  26
+#define SYS_barrier_wait    27
 // ============================================

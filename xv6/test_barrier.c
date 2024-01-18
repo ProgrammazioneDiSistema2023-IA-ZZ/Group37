@@ -1,23 +1,19 @@
 /***************************************************
-                    TEST SEMAPHORE
+                    TEST BARRIER
 File di test per verificare il corretto funzionamento
-dei semafori implementati con le system call
-sem_create, sem_wait e sem_signal.
+delle barrier.
 ***************************************************/
 
 #include "types.h"
 #include "stat.h"
 #include "user.h"
-#include "semaphore.h"
 
 
-void processo_figlio(int sem, int i){
-  sleep(100);
-  sem_wait(sem);
+void processo_figlio(int n_bar, int i){
+  sleep(100+(i*100));
+  printf(1,"figlio %d: in attesa\n", i);
+  barrier_wait(n_bar);
   printf(1,"figlio %d: risvegliato\n", i);
-  sleep(300);
-  printf(1,"figlio %d: ho rilasciato\n", i);
-  sem_signal(sem);
   
   // fa terminare il processo in modo che non vengano
   // create dai figli ulteriori fork 
@@ -26,13 +22,15 @@ void processo_figlio(int sem, int i){
 
 int main(int argc, char *argv[]){
   printf(1, "*********************************\n");
-  printf(1, "        TEST SEMAPHORE\n");
+  printf(1, "        TEST BARRIER\n");
   printf(1, "*********************************\n\n");
   
-  int n_sem = 2;
-  sem_create(n_sem, "semaforo", 2);
+  int n_bar = 1, n_proc = 5;
+  
+  
+  barrier_create(n_bar, n_proc, "barrier");
 
-  for (int i = 0; i < 4; i++){
+  for (int i = 0; i < n_proc; i++){
     int pid = fork();
 
     // pid > 0 -> parent
@@ -42,7 +40,7 @@ int main(int argc, char *argv[]){
 
     // pid == 0 -> child
     else if (pid == 0){
-      processo_figlio(n_sem, i);
+      processo_figlio(n_bar, i);
     }
 
     else if (pid < 0){
@@ -51,13 +49,13 @@ int main(int argc, char *argv[]){
   }
 
   
-  for (int i = 0; i < 4; i++){
+  for (int i = 0; i < n_proc; i++){
     wait();
   }
 
   printf(1, "\n");
   printf(1, "*********************************\n");
-  printf(1, "    TEST SEMAPHORE COMPLETED\n");
+  printf(1, "     TEST BARRIER COMPLETED\n");
   printf(1, "*********************************\n\n");
   exit();
 }

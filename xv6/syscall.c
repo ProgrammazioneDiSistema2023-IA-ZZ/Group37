@@ -111,6 +111,9 @@ extern int sys_test_g37(void);
 extern int sys_sem_create(void);
 extern int sys_sem_wait(void);
 extern int sys_sem_signal(void);
+
+extern int sys_barrier_create(void);
+extern int sys_barrier_wait(void);
 // =================================
 
 static int (*syscalls[])(void) = {
@@ -141,6 +144,9 @@ static int (*syscalls[])(void) = {
 [SYS_sem_create] sys_sem_create,
 [SYS_sem_wait] sys_sem_wait,
 [SYS_sem_signal] sys_sem_signal,
+
+[SYS_barrier_create] sys_barrier_create,
+[SYS_barrier_wait]   sys_barrier_wait,
 // =================================
 };
 

@@ -7,10 +7,13 @@ test_g37.d
 test_g37.o
 _test_semaphore
 _test_input
+_test_barrier
 test_semaphore.asm
 test_input.asm
 test_semaphore.sym
 test_input.sym
+test_barrier.sym
+test_barrier.asm
 input.d
 input.o
 semaphore.d

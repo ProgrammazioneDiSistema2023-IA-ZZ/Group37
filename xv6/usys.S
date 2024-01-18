@@ -35,4 +35,7 @@ SYSCALL(test_g37)
 SYSCALL(sem_create)
 SYSCALL(sem_wait)
 SYSCALL(sem_signal)
+
+SYSCALL(barrier_create)
+SYSCALL(barrier_wait)
 // ====================================

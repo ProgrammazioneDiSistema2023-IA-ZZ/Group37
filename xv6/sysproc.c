@@ -130,4 +130,28 @@ int sys_sem_signal(void) {
   sem_signal(sem);
   return 0;
 }
+
+int sys_barrier_create(void) {
+  int barrier;
+  int nproc;
+  char* name;
+  
+  argint(0, &barrier);
+  if (barrier < 0) return -1;
+
+  argint(1, &nproc);
+  argstr(2, (char**) &name);
+  barrier_create(barrier, nproc, name);
+
+  return 0;
+}
+
+int sys_barrier_wait(void) {
+  int barrier;
+  argint(0, &barrier);
+  if (barrier < 0) return -1;
+
+  barrier_wait(barrier);
+  return 0;
+}
 // ==================================

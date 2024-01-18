@@ -29,6 +29,7 @@ OBJS = \
 	vm.o\
 	list.o\
 	semaphore.o\
+	barrier.o\
 	test_g37.o\
 
 # Cross-compiling (e.g., on Mac OS X)
@@ -185,6 +186,7 @@ UPROGS=\
 	_wc\
 	_zombie\
 	_test_semaphore\
+	_test_barrier\
 	_test_input\
 
 fs.img: mkfs README $(UPROGS)
@@ -255,7 +257,7 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
 EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
 	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
-	input.c test_semaphore.c test_input.c\
+	input.c test_semaphore.c test_barrier.c test_input.c\
 	printf.c umalloc.c\
 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
