@@ -57,7 +57,7 @@ void sem_signal(int s){
     sem->count = sem->count + 1;
     
     sem->current = (sem->current + 1) % MAX_PROC;
-    struct proc* p = sem->queue[sem->current];
+    //struct proc* p = sem->queue[sem->current];
     wakeup(sem);
 
     // rilasciamo il lock
