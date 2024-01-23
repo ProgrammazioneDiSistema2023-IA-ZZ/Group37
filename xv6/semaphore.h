@@ -16,7 +16,6 @@ struct semaphore {
     const char *name;
     int count;
     struct spinlock lock;
-    // struct proclist queue;
     void* queue[MAX_PROC];
     unsigned int tail;
     unsigned int current;
@@ -24,9 +23,8 @@ struct semaphore {
 
 struct semaphore semaphores[MAX_SEM];
 
-struct semaphore* sem_create(int s, char *name, int initial_count);
-void sem_wait(int s);
-void sem_signal(int s);
-
+int sem_create(int s, char *name, int initial_count);
+int sem_wait(int s);
+int sem_signal(int s);
 
 #endif

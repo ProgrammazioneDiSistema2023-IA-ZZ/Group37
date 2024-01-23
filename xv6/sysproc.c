@@ -96,6 +96,7 @@ sys_uptime(void)
 // GROUP37 EDITS ====================
 int sys_test_g37(void) {
   test_g37();
+  return 0;
 }
 
 int sys_sem_create(void) {
@@ -108,9 +109,7 @@ int sys_sem_create(void) {
   
   argstr(1, (char**) &name);
   argint(2, (int*) &i);
-  sem_create(sem, name, i);
-
-  return 0;
+  return sem_create(sem, name, i);
 }
 
 int sys_sem_wait(void) {
@@ -118,8 +117,7 @@ int sys_sem_wait(void) {
   argint(0, &sem);
   if (sem < 0) return -1;
 
-  sem_wait(sem);
-  return 0;
+  return sem_wait(sem);
 }
 
 int sys_sem_signal(void) {
@@ -127,8 +125,7 @@ int sys_sem_signal(void) {
   argint(0, &sem);
   if (sem < 0) return -1;
 
-  sem_signal(sem);
-  return 0;
+  return sem_signal(sem);
 }
 
 int sys_barrier_create(void) {
@@ -141,9 +138,7 @@ int sys_barrier_create(void) {
 
   argint(1, &nproc);
   argstr(2, (char**) &name);
-  barrier_create(barrier, nproc, name);
-
-  return 0;
+  return barrier_create(barrier, nproc, name);
 }
 
 int sys_barrier_wait(void) {
@@ -151,7 +146,6 @@ int sys_barrier_wait(void) {
   argint(0, &barrier);
   if (barrier < 0) return -1;
 
-  barrier_wait(barrier);
-  return 0;
+  return barrier_wait(barrier);
 }
-// ==================================
+// =================================
